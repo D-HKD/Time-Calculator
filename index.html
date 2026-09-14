@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b33">
+  <title>POLICE STYLE · 時間計數機</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="shield" aria-hidden="true">24H</div>
+        <div>
+          <div class="system">POLICE STYLE</div>
+          <h1>時間計數機</h1>
+          <p>TIME CALCULATOR · 24 HOUR</p>
+        </div>
+      </div>
+      <div class="status"><span></span> SYSTEM READY</div>
+    </header>
+
+    <div class="notice">TIME OPERATIONS <b>24H</b></div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="index">01</div>
+        <div>
+          <h2>時間加／減</h2>
+          <p>輸入時間及分鐘，計算結果時間。</p>
+        </div>
+      </div>
+
+      <div class="grid three">
+        <label>
+          <span>TIME</span>
+          <input id="calcTime" type="time" value="10:30" step="60">
+        </label>
+        <label>
+          <span>OPERATION</span>
+          <select id="calcOperation">
+            <option value="add">＋ ADD</option>
+            <option value="subtract">－ SUBTRACT</option>
+          </select>
+        </label>
+        <label>
+          <span>MINUTES</span>
+          <input id="calcMinutes" type="number" value="45" min="0" max="1000000" step="1" inputmode="numeric">
+        </label>
+      </div>
+
+      <div class="display">
+        <small>RESULT TIME</small>
+        <strong id="calcResult">11:15</strong>
+        <div id="calcExpression">10:30 ＋ 45 分鐘</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="index">02</div>
+        <div>
+          <h2>兩個時間相差</h2>
+          <p>計算開始時間至結束時間的分鐘數。</p>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <label>
+          <span>START TIME</span>
+          <input id="startTime" type="time" value="10:30" step="60">
+        </label>
+        <label>
+          <span>END TIME</span>
+          <input id="endTime" type="time" value="12:15" step="60">
+        </label>
+      </div>
+
+      <div class="display">
+        <small>TIME DIFFERENCE</small>
+        <strong id="differenceMinutes">105 分鐘</strong>
+        <div id="differenceText">1 小時 45 分鐘</div>
+      </div>
+
+      <label class="check">
+        <input id="overnight" type="checkbox">
+        <span>跨午夜計算　23:30 → 01:00</span>
+      </label>
+    </section>
+
+    <div class="actions">
+      <button id="resetAll" type="button">RESET / 重設</button>
+    </div>
+
+    <p id="error" class="error" role="alert" aria-live="polite"></p>
+
+    <footer>
+      <span>24H TIME CALCULATOR</span>
+      <span>PERSONAL UTILITY · NOT AN OFFICIAL POLICE SYSTEM</span>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
