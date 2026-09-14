@@ -1,107 +1,111 @@
 *{box-sizing:border-box}
 :root{
-  --navy:#071b33;--navy2:#0b294b;--blue:#164d80;--line:#2b5277;
-  --gold:#d8b45a;--gold2:#f0d78a;--white:#f4f7fb;--muted:#aebed0;
-  --panel:#0b213b;--input:#081a2d;--danger:#e79b9b
+  --navy:#071b33;--navy2:#0b294b;--line:#2b5277;--gold:#d8b45a;
+  --gold2:#f0d78a;--white:#f4f7fb;--muted:#aebed0;--panel:#0b213b;
+  --input:#081a2d;--danger:#e79b9b
 }
 html,body{margin:0;min-height:100%;background:var(--navy);color:var(--white)}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",
-  "PingFang TC",sans-serif;
-}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC",sans-serif}
 body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;
-  background-image:linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);
-  background-size:28px 28px;
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;
+  background-image:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
+  background-size:30px 30px
 }
-.app{width:min(900px,calc(100% - 24px));margin:auto;padding:24px 0 30px}
+.app{width:min(900px,calc(100% - 22px));margin:auto;padding:22px 0 30px}
 .topbar{
   display:flex;justify-content:space-between;align-items:center;gap:16px;
   padding:18px 20px;background:linear-gradient(135deg,var(--navy2),#07182b);
   border:1px solid var(--line);border-top:3px solid var(--gold);
-  box-shadow:0 12px 30px rgba(0,0,0,.25)
+  border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.25)
 }
 .brand{display:flex;align-items:center;gap:14px;min-width:0}
 .shield{
   display:grid;place-items:center;width:58px;height:64px;flex:0 0 58px;
-  color:var(--gold2);font-weight:900;font-size:14px;
-  border:2px solid var(--gold);clip-path:polygon(50% 0,92% 15%,86% 68%,50% 100%,14% 68%,8% 15%)
+  color:var(--gold2);font-weight:900;font-size:14px;border:2px solid var(--gold);
+  clip-path:polygon(50% 0,92% 15%,86% 68%,50% 100%,14% 68%,8% 15%)
 }
 .system{font-size:11px;letter-spacing:.18em;color:var(--gold2);font-weight:800}
 h1{margin:3px 0 2px;font-size:clamp(25px,5vw,36px);letter-spacing:.02em}
 .brand p{margin:0;color:var(--muted);font-size:11px;letter-spacing:.12em}
 .status{
   flex:0 0 auto;color:#b8d9c4;font-size:11px;font-weight:800;letter-spacing:.08em;
-  border:1px solid #315d49;padding:8px 10px;background:#0b2b23
+  border:1px solid #315d49;padding:8px 10px;background:#0b2b23;border-radius:999px
 }
-.status span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7bc49a;margin-right:6px}
+.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7bc49a;margin-right:6px}
 .notice{
   margin:12px 0;color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:.16em;
-  border-left:3px solid var(--gold);padding:7px 10px;background:rgba(216,180,90,.06)
+  border-left:3px solid var(--gold);padding:7px 10px;background:rgba(216,180,90,.06);
+  border-radius:0 10px 10px 0
 }
 .notice b{float:right}
 .panel{
-  margin-top:14px;padding:22px;background:var(--panel);
-  border:1px solid var(--line);box-shadow:0 10px 28px rgba(0,0,0,.2)
+  margin-top:14px;padding:22px;background:rgba(11,33,59,.96);
+  border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 28px rgba(0,0,0,.2)
 }
 .panel-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
 .index{
-  width:38px;height:38px;display:grid;place-items:center;flex:0 0 38px;
-  border:1px solid var(--gold);color:var(--gold2);font-size:12px;font-weight:900
+  width:40px;height:40px;display:grid;place-items:center;flex:0 0 40px;
+  border:1px solid var(--gold);border-radius:12px;color:var(--gold2);font-size:12px;font-weight:900
 }
 h2{margin:1px 0 4px;font-size:20px}
 .panel-head p{margin:0;color:var(--muted);font-size:13px}
-.grid{display:grid;gap:12px}
-.grid.three{grid-template-columns:1.15fr .9fr 1fr}
-.grid.two{grid-template-columns:1fr 1fr}
-label>span{
-  display:block;margin-bottom:7px;color:var(--gold2);font-size:10px;
-  font-weight:900;letter-spacing:.12em
-}
+.grid{display:grid;gap:13px;min-width:0}
+.grid.three{grid-template-columns:minmax(0,1.15fr) minmax(0,.9fr) minmax(0,1fr)}
+.grid.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.grid>label{min-width:0}
+label>span{display:block;margin-bottom:7px;color:var(--gold2);font-size:10px;font-weight:900;letter-spacing:.12em}
 input[type=time],input[type=number],select{
-  width:100%;min-height:50px;padding:0 13px;border:1px solid var(--line);
-  border-radius:3px;background:var(--input);color:var(--white);
-  font:inherit;font-size:17px;outline:none
+  display:block;width:100%;max-width:100%;min-width:0;min-height:50px;
+  padding:0 13px;border:1px solid var(--line);border-radius:13px;
+  background:var(--input);color:var(--white);font:inherit;font-size:17px;outline:none;
+  -webkit-appearance:none;appearance:none
 }
-input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(216,180,90,.12)}
+input[type=time]::-webkit-date-and-time-value{text-align:center;min-width:0}
+input[type=time]::-webkit-calendar-picker-indicator{opacity:.8}
+input:focus,select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(216,180,90,.12)}
 .display{
-  margin-top:16px;padding:20px;text-align:center;
-  border:1px solid var(--line);background:#06172a
+  margin-top:16px;padding:20px;text-align:center;border:1px solid var(--line);
+  border-radius:16px;background:#06172a;overflow:hidden
 }
 .display small{display:block;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.14em}
 .display strong{
-  display:block;margin:5px 0;color:var(--gold2);
-  font-size:clamp(38px,9vw,60px);line-height:1.05;
-  font-variant-numeric:tabular-nums;letter-spacing:.02em
+  display:block;margin:5px 0;color:var(--gold2);font-size:clamp(38px,9vw,60px);
+  line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:.02em;
+  overflow-wrap:anywhere
 }
 .display div{color:var(--muted);font-size:13px}
 .check{
   display:flex;align-items:center;gap:9px;margin-top:15px;color:var(--muted);
   font-size:13px;cursor:pointer
 }
-.check input{width:18px;height:18px;accent-color:var(--gold)}
+.check input{width:18px;height:18px;accent-color:var(--gold);flex:0 0 auto}
 .actions{display:flex;justify-content:flex-end;margin-top:14px}
 button{
-  min-height:45px;padding:0 18px;border:1px solid var(--gold);
-  border-radius:3px;background:transparent;color:var(--gold2);
-  font:inherit;font-size:13px;font-weight:900;cursor:pointer
+  min-height:46px;padding:0 19px;border:1px solid var(--gold);border-radius:999px;
+  background:rgba(216,180,90,.04);color:var(--gold2);font:inherit;font-size:13px;
+  font-weight:900;cursor:pointer
 }
-button:hover{background:rgba(216,180,90,.1)}
+button:hover{background:rgba(216,180,90,.12)}
+button:focus-visible{outline:3px solid rgba(240,215,138,.2);outline-offset:2px}
 .error{min-height:18px;color:var(--danger);text-align:center;font-size:12px;margin:10px 0}
 footer{
-  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-  margin-top:20px;padding-top:12px;border-top:1px solid var(--line);
-  color:#71869c;font-size:9px;letter-spacing:.08em
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:20px;
+  padding-top:12px;border-top:1px solid var(--line);color:#71869c;font-size:9px;letter-spacing:.08em
 }
 @media(max-width:650px){
-  .app{width:calc(100% - 14px);padding-top:12px}
-  .topbar{padding:15px 13px;align-items:flex-start}
+  .app{width:calc(100% - 12px);padding-top:12px}
+  .topbar{padding:15px 13px;align-items:flex-start;border-radius:16px}
   .shield{width:48px;height:54px;flex-basis:48px}
   .status{display:none}
-  .panel{padding:17px}
-  .grid.three,.grid.two{grid-template-columns:1fr}
+  .panel{padding:17px;border-radius:18px}
+  .grid.three,.grid.two{grid-template-columns:minmax(0,1fr)}
   h2{font-size:18px}
   .display strong{font-size:44px}
   footer{display:block;line-height:1.8}
+}
+@media(max-width:360px){
+  .brand{gap:9px}.shield{width:43px;height:49px;flex-basis:43px;font-size:12px}
+  .system{font-size:9px}h1{font-size:23px}.brand p{font-size:9px}
+  .panel{padding:14px}.display{padding:17px 10px}
 }
