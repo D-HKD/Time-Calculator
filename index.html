@@ -1,105 +1,104 @@
 <!doctype html>
-<html lang="zh-HK">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#071b33">
-  <title>POLICE STYLE · 時間計數機</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main class="app">
-    <header class="topbar">
-      <div class="brand">
-        <div class="shield" aria-hidden="true">24H</div>
-        <div class="brand-copy">
-          <div class="system">POLICE STYLE</div>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#071a31">
+    <meta name="description" content="24 小時制時間加減及時段差計算工具">
+    <title>Time Desk · 24H 時間計算機</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div class="brand-mark" aria-hidden="true">24</div>
+        <div>
+          <p class="eyebrow">TIME DESK · PERSONAL UTILITY</p>
           <h1>時間計數機</h1>
-          <p>TIME CALCULATOR · 24 HOUR</p>
+          <p class="subtitle">24 小時制 · 即時計算 · 手機優先</p>
         </div>
-      </div>
-      <div class="status"><i></i> SYSTEM READY</div>
-    </header>
+        <div class="system-status"><span></span> READY</div>
+      </header>
 
-    <div class="notice">TIME OPERATIONS <b>24H</b></div>
-
-    <section class="panel">
-      <div class="panel-head">
-        <div class="index">01</div>
-        <div>
-          <h2>時間加／減</h2>
-          <p>輸入時間及分鐘，計算結果時間。</p>
+      <section class="calculator-card" aria-labelledby="adjust-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">01 · TIME ADJUSTMENT</p>
+            <h2 id="adjust-title">時間加／減</h2>
+          </div>
+          <button class="reset-button" type="button" data-reset="adjust">重設</button>
         </div>
-      </div>
 
-      <div class="grid three">
-        <label>
-          <span>TIME</span>
-          <input id="calcTime" type="time" value="10:30" step="60">
-        </label>
-        <label>
-          <span>OPERATION</span>
-          <select id="calcOperation">
-            <option value="add">＋ ADD</option>
-            <option value="subtract">－ SUBTRACT</option>
-          </select>
-        </label>
-        <label>
-          <span>MINUTES</span>
-          <input id="calcMinutes" type="number" value="45" min="0" max="1000000" step="1" inputmode="numeric">
-        </label>
-      </div>
+        <div class="adjust-grid">
+          <label class="field time-field">
+            <span>原本時間</span>
+            <input id="base-time" type="time" inputmode="numeric" step="60" aria-describedby="base-time-note">
+            <small id="base-time-note">24 小時制</small>
+          </label>
 
-      <div class="display">
-        <small>RESULT TIME</small>
-        <strong id="calcResult">11:15</strong>
-        <div id="calcExpression">10:30 ＋ 45 分鐘</div>
-      </div>
-    </section>
+          <fieldset class="operation" aria-label="運算方式">
+            <legend>運算</legend>
+            <div class="segmented-control">
+              <input id="op-add" name="operation" type="radio" value="add" checked>
+              <label for="op-add">＋ 加</label>
+              <input id="op-subtract" name="operation" type="radio" value="subtract">
+              <label for="op-subtract">－ 減</label>
+            </div>
+          </fieldset>
 
-    <section class="panel">
-      <div class="panel-head">
-        <div class="index">02</div>
-        <div>
-          <h2>兩個時間相差</h2>
-          <p>計算開始時間至結束時間的分鐘數。</p>
+          <label class="field number-field">
+            <span>分鐘</span>
+            <input id="adjust-minutes" type="number" inputmode="numeric" min="0" max="9999" step="1" placeholder="例如 45">
+            <small>可輸入 0–9999</small>
+          </label>
         </div>
-      </div>
 
-      <div class="grid two">
-        <label>
-          <span>START TIME</span>
-          <input id="startTime" type="time" value="10:30" step="60">
+        <div class="result-panel" aria-live="polite">
+          <div>
+            <p>計算結果</p>
+            <span id="adjust-message">請輸入時間及分鐘</span>
+          </div>
+          <output id="adjust-result" class="time-result">--:--</output>
+        </div>
+      </section>
+
+      <section class="calculator-card" aria-labelledby="difference-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">02 · ELAPSED TIME</p>
+            <h2 id="difference-title">兩個時間相差</h2>
+          </div>
+          <button class="reset-button" type="button" data-reset="difference">重設</button>
+        </div>
+
+        <div class="difference-grid">
+          <label class="field time-field">
+            <span>開始時間</span>
+            <input id="start-time" type="time" inputmode="numeric" step="60">
+          </label>
+          <div class="direction" aria-hidden="true">→</div>
+          <label class="field time-field">
+            <span>結束時間</span>
+            <input id="end-time" type="time" inputmode="numeric" step="60">
+          </label>
+        </div>
+
+        <label class="midnight-toggle">
+          <input id="allow-midnight" type="checkbox" checked>
+          <span class="toggle-ui" aria-hidden="true"></span>
+          <span><strong>跨午夜計算</strong><small>結束時間早於開始時間時，視為翌日</small></span>
         </label>
-        <label>
-          <span>END TIME</span>
-          <input id="endTime" type="time" value="12:15" step="60">
-        </label>
-      </div>
 
-      <div class="display">
-        <small>TIME DIFFERENCE</small>
-        <strong id="differenceMinutes">105 分鐘</strong>
-        <div id="differenceText">1 小時 45 分鐘</div>
-      </div>
+        <div class="elapsed-panel" aria-live="polite">
+          <p>相差時間</p>
+          <output id="difference-result">-- 分鐘</output>
+          <span id="difference-detail">請輸入兩個有效時間</span>
+        </div>
+      </section>
 
-      <label class="check">
-        <input id="overnight" type="checkbox">
-        <span>跨午夜計算　23:30 → 01:00</span>
-      </label>
-    </section>
-
-    <div class="actions">
-      <button id="resetAll" type="button">RESET / 重設</button>
-    </div>
-
-    <p id="error" class="error" role="alert" aria-live="polite"></p>
-
-    <footer>
-      <span>24H TIME CALCULATOR</span>
-      <span>PERSONAL UTILITY · NOT AN OFFICIAL POLICE SYSTEM</span>
-    </footer>
-  </main>
-  <script src="app.js"></script>
-</body>
+      <button id="reset-all" class="reset-all" type="button">重設全部資料</button>
+      <p class="disclaimer">PERSONAL TIME UTILITY · NOT AN OFFICIAL SYSTEM</p>
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>
